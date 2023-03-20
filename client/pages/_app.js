@@ -1,8 +1,9 @@
 import "@/styles/globals.css";
-import { wrapper } from "../store";
+import { wrapper } from "store";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
-import Navigation from "components/navigation";
+import Navigation from "components/general/navigation";
+import FetchChars from "components/services/FetchChars";
 
 const StyledMainWrapper = styled.div`
   display: flex;
@@ -22,6 +23,7 @@ function App({ Component, pageProps }) {
     <ThemeProvider theme={{}}>
       <StyledMainWrapper>
         <StyledWrapper>
+          <FetchChars />
           <Navigation />
           <Component {...pageProps} />
         </StyledWrapper>
