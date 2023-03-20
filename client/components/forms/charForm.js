@@ -59,10 +59,9 @@ const CharForm = () => {
   const save = async (data) => {
     try {
       let bodyFormData = new FormData();
-      bodyFormData.set("id", data.id);
+      bodyFormData.set("id", parseInt(data.id));
       bodyFormData.set("name", data.name);
       bodyFormData.append("image", photo);
-      bodyFormData.set("type", data.type);
       await dispatch(
         addCharWithImage(bodyFormData, () => {
           setPhoto(null);

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import Navigation from "components/general/navigation";
 import FetchChars from "components/services/FetchChars";
+import { themeData } from "@/data/themeData";
 
 const StyledMainWrapper = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ const StyledWrapper = styled.div`
 `;
 function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={{}}>
+    <ThemeProvider theme={themeData}>
       <StyledMainWrapper>
         <StyledWrapper>
           <FetchChars />

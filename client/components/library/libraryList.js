@@ -1,19 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import { values } from "ramda";
-import { removeChar } from "actions/chars";
+import Card from "components/library/card";
 
 const LibraryList = () => {
   const dispatch = useDispatch();
   const characters = useSelector((state) => state.chars.data);
   return (
     <div>
-      {values(characters).map((val) => {
+      {values(characters).map((value) => {
         return (
-          <div key={val.id}>
-            char
-            {val.id}
-            <button type="button" onClick={() => dispatch(removeChar(val.id))}>delete</button>
-          </div>
+          <Card key={value.id} char={value} />
         );
       })}
     </div>
