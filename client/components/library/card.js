@@ -17,9 +17,7 @@ const Card = ({ char }) => {
     <StyledCardWrapper>
       <CardDetails>
         <CharacterDelete char={char}/>
-        <div>Wins: {char.wins || 0}</div>
-        <div>Losses: {char.losses || 0}</div>
-        <div>Elo: {Math.round(char.elo) || 1500}</div>
+        <h3>{char.name}</h3>
       </CardDetails>
       <Link href={`/library/edit/${char.id}`}>
         <CardImage src={char.image} />
