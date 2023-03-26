@@ -3,22 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateResources as updateResourcesAction } from "reducers/resources";
 
 function ResourceIncrementer() {
-  const [incrementRates, setIncrementRates] = useState({
-    lumber: 1,
-    ore: 2,
-    fish: 3,
-  });
-
   const dispatch = useDispatch();
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const resources = useSelector((state) => state.resources.data);
-
+  const incrementRates = useSelector((state) => state.resources.incrementRates);
   useEffect(() => {
     const storedResources = localStorage.getItem("resources");
     const storedLastUpdate = localStorage.getItem("lastUpdate");
 
     if (storedResources && storedLastUpdate) {
-      dispatch(updateResourcesAction(JSON.parse(storedResources)));
+      dispatch(updateResourcesAction({ ...resources, ...JSON.parse(storedResources) }));
       setLastUpdate(+storedLastUpdate);
     }
   }, []);
