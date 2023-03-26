@@ -3,8 +3,9 @@ import { wrapper } from "store";
 import styled from "styled-components";
 import { ThemeProvider } from "styled-components";
 import Navigation from "components/general/navigation";
-import FetchChars from "components/services/FetchChars";
+import FetchChars from "components/services/fetchChars";
 import { themeData } from "@/data/themeData";
+import ResourceIncrementer from "components/services/resourceIncrementer";
 
 const StyledMainWrapper = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ function App({ Component, pageProps }) {
     <ThemeProvider theme={themeData}>
       <StyledMainWrapper>
         <StyledWrapper>
+          <ResourceIncrementer />
           <FetchChars />
           <Navigation />
           <Component {...pageProps} />
