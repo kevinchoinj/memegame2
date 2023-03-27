@@ -1,10 +1,12 @@
 import {  useSelector } from "react-redux";
+import { TextField } from "@material-ui/core";
 
 function ResourceView() {
   const resources = useSelector(state => state.resources.data);
 
   return (
     <div>
+      <TextField name="asdf" variant="outlined" color="primary" />
       <ul>
         {Object.entries(resources).map(([key, value]) => (
           <li key={key}>

@@ -4,13 +4,14 @@ import { styled } from "@mui/system";
 import Navigation from "components/general/navigation";
 import FetchChars from "components/services/fetchChars";
 import ResourceIncrementer from "components/services/resourceIncrementer";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import theme from "theme";
 
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "createEmotionCache";
 
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache({ key: 'css' });
 
 const StyledMainWrapper = styled("div")({
   display: "flex",
@@ -26,16 +27,10 @@ const StyledWrapper = styled("div")({
   overflowY: "auto",
 });
 
-export const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
-
 function App({ Component, pageProps }) {
   return (
     <CacheProvider value={clientSideEmotionCache}>
-      <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <StyledMainWrapper>
           <StyledWrapper>
