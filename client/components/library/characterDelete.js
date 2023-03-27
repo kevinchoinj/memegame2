@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import styled from "styled-components";
+import { styled } from "@material-ui/core/styles";
 import { removeChar } from "actions/chars";
 import Button from "components/general/button";
 import Modal from "components/general/modal";
 
-const StyledRow = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  > * {
-    margin-left: 2px;
-  }
-`;
+const StyledRow = styled("div")({
+  display: "flex",
+  justifyContent: "flex-end",
+  "& > *": {
+    marginLeft: "2px",
+  },
+});
 
 const CharacterDelete = ({ char }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);

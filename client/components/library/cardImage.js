@@ -1,27 +1,25 @@
 import React from "react";
-import styled from "styled-components";
 import { useRouter } from "next/router";
+import { styled } from "@material-ui/core/styles";
 
-const Image = ({ className, onClick, size, src }) => (
-  <img alt="" className={className} loading="lazy" onClick={onClick} size={size} src={src} />
-);
+const StyledImage = styled("img")(({ defeated, link }) => ({
+  width: 225,
+  height: 400,
+  objectFit: "cover",
+  objectPosition: "center center",
+  transition: "0.2s ease",
+  transform: defeated ? "rotate(-45deg) translateY(30%) translateX(-20%)" : "",
+  cursor: link ? "pointer" : "",
+}));
 
-const StyledImage = styled(Image)`
-  width: ${(props) => (props.size === "small" ? props.theme.cardWidthSmall : props.theme.cardWidth)};
-  height: ${(props) => (props.size === "small" ? props.theme.cardHeightSmall : props.theme.cardHeight)};
-  height: ${(props) => props.size === "large" && props.theme.cardHeightLarge};
-  width: ${(props) => props.size === "large" && props.theme.cardWidthLarge};
-  object-fit: cover;
-  object-position: center center;
-  transition: 0.2s ease;
-  transform: ${(props) => props.defeated && "rotate(-45deg) translateY(30%) translateX(-20%);"};
-  cursor: ${(props) => props.link && "pointer"};
-`;
+const Image = ({ defeated, link, onClick, size, src }) => {
+  return <StyledImage alt="" defeated={defeated} link={link} loading="lazy" onClick={onClick} size={size} src={src} />;
+};
 
-const CardImage = ({ defeated, link, onClick, size, src }) => {
+const CardImage = ({ defeated, link, onClick, src }) => {
   const navigate = useRouter();
   return (
-    <StyledImage
+    <Image
       alt="card"
       defeated={defeated}
       link={link || onClick}
@@ -34,7 +32,6 @@ const CardImage = ({ defeated, link, onClick, size, src }) => {
         }
         return;
       }}
-      size={size}
       src={src}
     />
   );

@@ -66,25 +66,3 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
-
-input {
-  padding: 3px 10px;
-  border-radius: 5px;
-  background-color: #202225;
-  color: #ddd;
-  border: 1px solid #333;
-  outline: none;
-  font-size: 0.8rem;
-  line-height: 1.5rem;
-}
-textarea {
-  padding: 3px 10px;
-  border-radius: 5px;
-  background-color: #202225;
-  color: #ddd;
-  border: 1px solid #333;
-  outline: none;
-  font-size: 0.8rem;
-  line-height: 1.5rem;
-  width: 100%;
-}

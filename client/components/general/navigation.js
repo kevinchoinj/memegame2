@@ -1,24 +1,25 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { routes } from "data/routes";
+import { styled } from "@mui/system";
 
-const StyledWrapper = styled.div`
-  width: 230px;
-  height: 100%;
-  display: flex;
-  box-sizing: border-box;
-  background-color: #2f3136;
-  flex-direction: column;
-  a {
-    color: #ddd;
-    text-decoration: none;
-  }
-`;
+const StyledWrapper = styled("div")({
+  width: "230px",
+  height: "100%",
+  display: "flex",
+  boxSizing: "border-box",
+  backgroundColor: "#2f3136",
+  flexDirection: "column",
+  "& a": {
+    color: "#ddd",
+    textDecoration: "none",
+  },
+});
 
-const StyledCount = styled.div`
-  font-size: 12px;
-`;
+const StyledCount = styled("div")({
+  fontSize: "12px",
+});
+
 const LinkObject = ({ count, className, label, href }) => {
   return (
     <Link href={href} className={className}>
@@ -27,18 +28,18 @@ const LinkObject = ({ count, className, label, href }) => {
   );
 };
 
-const StyledLink = styled(LinkObject)`
-  transition: 0.2s ease;
-  background-color: ${(props) => props.active && "#42464d"};
-  padding: 0.5rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-transform: capitalize;
-  &:hover {
-    background-color: #42464d;
-  }
-`;
+const StyledLink = styled(LinkObject)(({ active }) => ({
+  transition: "0.2s ease",
+  backgroundColor: active ? "#42464d" : "",
+  padding: "0.5rem 1.25rem",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  textTransform: "capitalize",
+  "&:hover": {
+    backgroundColor: "#42464d",
+  },
+}));
 
 const Navigation = () => {
   const router = useRouter();

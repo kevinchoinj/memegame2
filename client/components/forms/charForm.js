@@ -1,18 +1,18 @@
 import { createRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCharWithImage, fetchLastChar } from "actions/chars";
-import styled from "styled-components";
 import { Controller, useForm } from "react-hook-form";
 import Field from "components/general/field";
 import { TextField } from "@material-ui/core";
+import { styled  } from "@material-ui/core/styles";
 
-const StyledWrapper = styled.div`
-  background-color: #2f3136;
-  border-radius: 5px;
-  max-width: 360px;
-  user-select: none;
-  margin-bottom: 1rem;
-`;
+export const StyledWrapper = styled("div")({
+  backgroundColor: "#2f3136",
+  borderRadius: "5px",
+  maxWidth: "360px",
+  userSelect: "none",
+  marginBottom: "1rem",
+});
 
 const CharForm = () => {
   const dispatch = useDispatch();
